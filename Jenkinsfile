@@ -5,17 +5,32 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                bat '''echo "PATH = %PATH%"
+       				   echo "MAVEN_HOME = %MAVEN_HOME%"
+        		        mvn install''''
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                bat '''echo "PATH = %PATH%"
+       				   echo "MAVEN_HOME = %MAVEN_HOME%"
+        		        mvn test''''
             }
         }
-        stage('Deploy') {
+        stage('package') {
             steps {
-                echo 'Deploying....'
+                 bat '''echo "PATH = %PATH%"
+       				   echo "MAVEN_HOME = %MAVEN_HOME%"
+        		        mvn install'''''
+            }
+        }
+        stage('deploy') {
+            steps {
+                  
+        cd target 
+        copy CounterWebApp.war "c:\\apache\\tomcat\\webapps"
+        echo "copied successfully"
+        '''''
             }
         }
     }
