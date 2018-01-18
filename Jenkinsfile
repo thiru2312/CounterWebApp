@@ -8,7 +8,7 @@ pipeline {
                 bat '''echo "PATH = %PATH%"
        				   echo "MAVEN_HOME = %MAVEN_HOME%"
         		        mvn install'''
-            }
+                  }
         }
         stage('Test') {
             steps {
@@ -27,10 +27,9 @@ pipeline {
         stage('deploy') {
             steps {
                   
-        cd target 
+        bat '''cd target 
         copy CounterWebApp.war "c:\\apache\\tomcat\\webapps"
-        echo "copied successfully"
-        '''''
+        echo "copied successfully" '''
             }
         }
     }
