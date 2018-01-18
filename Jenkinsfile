@@ -7,21 +7,21 @@ pipeline {
             steps {
                 bat '''echo "PATH = %PATH%"
        				   echo "MAVEN_HOME = %MAVEN_HOME%"
-        		        mvn install''''
+        		        mvn install'''
             }
         }
         stage('Test') {
             steps {
                 bat '''echo "PATH = %PATH%"
        				   echo "MAVEN_HOME = %MAVEN_HOME%"
-        		        mvn test''''
+        		        mvn test'''
             }
         }
         stage('package') {
             steps {
                  bat '''echo "PATH = %PATH%"
        				   echo "MAVEN_HOME = %MAVEN_HOME%"
-        		        mvn install'''''
+        		        mvn package'''
             }
         }
         stage('deploy') {
